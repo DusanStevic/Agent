@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      #      globalcors:
+      #        corsConfigurations:
+      #          '[/**]':
+      #            allowedOrigins: "*"
+      #            allowedMethods:
+      #              - GET
+      #              - POST
+      #              - PUT
+      #              - DELETE
+      routes:
+      # add routes here example :
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+management:
+  endpoint:
+    service-registry:
+      enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: https://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+    healthcheck:
+      enabled: true
+    registry-fetch-interval-seconds: 3
+  instance:
+    non-secure-port-enabled: false
+    secure-port-enabled: true
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.int}
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
