@@ -28,7 +28,7 @@ public class AuthenticationService {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                     loginRequestDTO.getUsername(), loginRequestDTO.getPassword()));
         } catch (BadCredentialsException | InternalAuthenticationServiceException e) {
-            throw new AuthenticationException();
+            throw new AuthenticationException("Invalid credentials");
         }
         final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(loginRequestDTO.getUsername());
         return jwtTokenUtil.generateToken(userDetails);
