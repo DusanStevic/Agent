@@ -24,6 +24,6 @@ public class AuthenticationController {
     @PostMapping(value = "login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO0) throws AuthenticationException {
         String token = authenticationService.login(loginRequestDTO0);
-        return new ResponseEntity(token, HttpStatus.OK);
+        return new ResponseEntity(new LoginResponseDTO(token), HttpStatus.OK);
     }
 }
