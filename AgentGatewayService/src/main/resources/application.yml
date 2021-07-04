@@ -6,16 +6,15 @@ spring:
     name: gateway-service
   cloud:
     gateway:
-      #      globalcors:
-      #        corsConfigurations:
-      #          '[/**]':
-      #            allowedOrigins: "*"
-      #            allowedMethods:
-      #              - GET
-      #              - POST
-      #              - PUT
-      #              - DELETE
       routes:
+        - id: agent-shop-service
+          uri: lb://agent-shop-service
+          predicates:
+            - Method=GET,POST
+        - id: agent-product-service
+          uri: lb://agent-product-service
+          predicates:
+            - Method=GET,POST
       # add routes here example :
       discovery:
         locator:
@@ -30,7 +29,7 @@ management:
 eureka:
   client:
     service-url:
-      defaultZone: https://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
     register-with-eureka: true
     fetch-registry: true
     healthcheck:
