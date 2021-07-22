@@ -9,14 +9,14 @@ eureka:
   instance:
     hostname: localhost
     securePort: ${server.port}
-    securePortEnabled: true
-    nonSecurePortEnabled: false
-    homePageUrl: https://${eureka.instance.hostname}:${server.port}/
-    statusPageUrl: https://${eureka.instance.hostname}:${server.port}/admin/info
+    securePortEnabled: false
+    nonSecurePortEnabled: true
+    homePageUrl: http://${eureka.instance.hostname}:${server.port}/
+    statusPageUrl: http://${eureka.instance.hostname}:${server.port}/admin/info
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     enable-self-preservation: false

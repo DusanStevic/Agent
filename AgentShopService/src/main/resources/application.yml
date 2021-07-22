@@ -4,11 +4,22 @@ server:
 spring:
   application:
     name: agent-shop-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/agent
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+jwt:
+  secret: Agent
 
 eureka:
   client:
     service-url:
-      defaultZone: https://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
     register-with-eureka: true
     fetch-registry: true
     healthcheck:
@@ -18,6 +29,6 @@ eureka:
     instance-id: ${spring.application.name}:${random.int}
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
-    nonSecurePortEnabled: false
-    securePortEnabled: true
+    nonSecurePortEnabled: true
+    securePortEnabled: false
     securePort: ${server.port}

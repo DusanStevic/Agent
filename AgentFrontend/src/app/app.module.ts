@@ -14,7 +14,7 @@ import { ReportComponent } from './report/report.component';
 import { ProductComponent } from './product/product.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from './material/MaterialModule';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptorService} from './service/token-interceptor-service';
 
 @NgModule({
@@ -35,7 +35,8 @@ import {TokenInterceptorService} from './service/token-interceptor-service';
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

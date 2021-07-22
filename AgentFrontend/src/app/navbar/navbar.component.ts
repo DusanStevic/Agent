@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
+  }
+
+  getLoggedIn(): boolean {
+    return localStorage.getItem('token') !== null;
+  }
+
+  logIn() {
+    this.router.navigateByUrl('login');
+  }
+
+  logOut() {
+    localStorage.clear();
   }
 
 }
