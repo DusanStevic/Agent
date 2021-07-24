@@ -13,6 +13,10 @@ export class TokenInterceptorService implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (request.url.includes('cloudinary')) {
+      request = request.clone();
+      return next.handle(request);
+    }
     const token = this.getToken();
     if (token) {
       request = request.clone({
@@ -31,5 +35,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   getToken(): string {
     return localStorage.getItem('token');
   }
+
+
 
 }
