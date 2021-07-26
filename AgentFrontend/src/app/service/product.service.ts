@@ -52,4 +52,12 @@ export class ProductService {
     formData.append('cloud_name', 'detmeun2w');
     return this.http.post(this.cloudinary, formData);
   }
+
+  getProducts(): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(`${environment.agentApi}agent-product-service/api/product`);
+  }
+
+  getProduct(id: string): Observable<Product> {
+    return this.http.get<Product>(`${environment.agentApi}agent-product-service/api/product/${id}`);
+  }
 }

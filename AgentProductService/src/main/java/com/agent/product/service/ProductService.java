@@ -21,4 +21,12 @@ public class ProductService {
         Product product = ProductConverter.convertToProduct(productDTO);
         return productRepository.save(product);
     }
+
+    public Product getProduct(Long id) {
+        return productRepository.getById(id);
+    }
+
+    public List<Product> getProducts() {
+        return productRepository.findAll();
+    }
 }
