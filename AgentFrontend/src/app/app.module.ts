@@ -16,6 +16,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from './material/MaterialModule';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptorService} from './service/token-interceptor-service';
+import { NewProductComponent } from './new-product/new-product.component';
+import { ProductItemComponent } from './product-item/product-item.component';
+import { ProductInfoComponent } from './product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {TokenInterceptorService} from './service/token-interceptor-service';
     LoginComponent,
     OrderComponent,
     ReportComponent,
-    ProductComponent
+    ProductComponent,
+    NewProductComponent,
+    ProductItemComponent,
+    ProductInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,7 @@ import {TokenInterceptorService} from './service/token-interceptor-service';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
