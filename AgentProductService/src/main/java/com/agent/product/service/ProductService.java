@@ -29,4 +29,8 @@ public class ProductService {
     public List<Product> getProducts() {
         return productRepository.findAll();
     }
+    public Product editProduct(ProductDTO productDTO) {
+        Product product = ProductConverter.convertToProduct(productDTO);
+        return productRepository.save(product);
+    }
 }

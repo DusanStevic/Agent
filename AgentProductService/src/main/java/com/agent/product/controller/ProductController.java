@@ -42,4 +42,11 @@ public class ProductController {
         ProductDTO responseDTO = ProductConverter.convertToDTO(product);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
+
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ProductDTO> editProduct(@RequestBody ProductDTO productDTO) {
+        Product product = productService.editProduct(productDTO);
+        ProductDTO responseDTO = ProductConverter.convertToDTO(product);
+        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    }
 }

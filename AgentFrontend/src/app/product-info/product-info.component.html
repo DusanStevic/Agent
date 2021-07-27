@@ -9,7 +9,7 @@
     <h4>Price: {{product.price}}</h4>
     <button color="primary" class="buyButton" mat-raised-button *ngIf="product.available>0">Buy</button>
     <h4 *ngIf="product.available == 0">Out of stock</h4>
-    <button mat-raised-button class="button-margin" *ngIf="loggedIn()">Edit</button>
+    <button (click)="editProduct()" mat-raised-button class="button-margin" *ngIf="loggedIn()">Edit</button>
     <button mat-raised-button class="button-margin" color="warn" *ngIf="loggedIn()">Delete</button>
   </mat-card-content>
 </mat-card>
