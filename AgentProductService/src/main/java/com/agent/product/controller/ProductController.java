@@ -42,4 +42,10 @@ public class ProductController {
         ProductDTO responseDTO = ProductConverter.convertToDTO(product);
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "{id}")
+    public ResponseEntity<Boolean> deleteProduct(@PathVariable(value = "id") Long id) {
+        productService.deleteProduct(id);
+        return new ResponseEntity<>(true, HttpStatus.OK);
+    }
 }

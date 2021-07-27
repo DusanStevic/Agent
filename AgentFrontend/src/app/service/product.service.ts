@@ -60,4 +60,8 @@ export class ProductService {
   getProduct(id: string): Observable<Product> {
     return this.http.get<Product>(`${environment.agentApi}agent-product-service/api/product/${id}`);
   }
+
+  deleteProduct(id: string): Observable<boolean> {
+    return this.http.delete<boolean>(`${environment.agentApi}agent-product-service/api/product/${id}`);
+  }
 }
