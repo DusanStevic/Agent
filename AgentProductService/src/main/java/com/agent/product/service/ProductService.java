@@ -33,4 +33,8 @@ public class ProductService {
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
+    public Product editProduct(ProductDTO productDTO) {
+        Product product = ProductConverter.convertToProduct(productDTO);
+        return productRepository.save(product);
+    }
 }

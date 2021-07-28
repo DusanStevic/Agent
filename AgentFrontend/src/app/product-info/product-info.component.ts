@@ -11,8 +11,8 @@ import {AuthenticationService} from '../service/authentication.service';
 })
 export class ProductInfoComponent implements OnInit {
 
-  constructor(private productService: ProductService,
-              private activeRoute: ActivatedRoute,
+
+  constructor(private productService: ProductService, private activeRoute: ActivatedRoute,
               private authenticationService: AuthenticationService,
               private router: Router) {
   }
@@ -43,6 +43,8 @@ export class ProductInfoComponent implements OnInit {
         this.router.navigateByUrl('');
       }
     );
+  editProduct() {
+    this.router.navigateByUrl('edit-product/' + this.id);
   }
 
 }
