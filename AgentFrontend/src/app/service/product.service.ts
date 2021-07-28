@@ -58,6 +58,9 @@ export class ProductService {
     return this.http.get<Product>(`${environment.agentApi}agent-product-service/api/product/${id}`);
   }
 
+  deleteProduct(id: string): Observable<boolean> {
+    return this.http.delete<boolean>(`${environment.agentApi}agent-product-service/api/product/${id}`);
+  }
   editProduct(dto: Product, file: File, success, failure) {
     console.log(file);
     if (!file) {
@@ -87,5 +90,4 @@ export class ProductService {
     );
 
   }
-
 }

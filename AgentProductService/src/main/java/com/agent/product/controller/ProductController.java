@@ -43,6 +43,11 @@ public class ProductController {
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
+    @DeleteMapping(value = "{id}")
+    public ResponseEntity<Boolean> deleteProduct(@PathVariable(value = "id") Long id) {
+        productService.deleteProduct(id);
+        return new ResponseEntity<>(true, HttpStatus.OK);
+    }
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ProductDTO> editProduct(@RequestBody ProductDTO productDTO) {
         Product product = productService.editProduct(productDTO);
