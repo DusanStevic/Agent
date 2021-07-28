@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../model/Product';
 import {ProductService} from '../service/product.service';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {AuthenticationService} from '../service/authentication.service';
 
@@ -12,7 +13,8 @@ import {AuthenticationService} from '../service/authentication.service';
 export class ProductInfoComponent implements OnInit {
 
   constructor(private productService: ProductService, private activeRoute: ActivatedRoute,
-              private authenticationService: AuthenticationService) {
+              private authenticationService: AuthenticationService,
+              private router: Router) {
   }
 
   product: Product;
@@ -33,6 +35,10 @@ export class ProductInfoComponent implements OnInit {
 
   loggedIn(): boolean {
     return localStorage.getItem('token') !== null;
+  }
+
+  editProduct() {
+    this.router.navigateByUrl('edit-product/' + this.id);
   }
 
 }

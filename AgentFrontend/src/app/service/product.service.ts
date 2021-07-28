@@ -16,8 +16,6 @@ export class ProductService {
   }
 
   createProduct(dto: Product, file: File, success, failure) {
-    console.log(file);
-
     if (!file) {
       console.log(`${environment.agentApi}agent-product-service/api/product`);
       this.http.post<Product>(`${environment.agentApi}agent-product-service/api/product`, dto).subscribe(
@@ -42,7 +40,6 @@ export class ProductService {
         );
       }
     );
-
   }
 
   uploadImage(file: File): Observable<any> {
@@ -60,4 +57,35 @@ export class ProductService {
   getProduct(id: string): Observable<Product> {
     return this.http.get<Product>(`${environment.agentApi}agent-product-service/api/product/${id}`);
   }
+
+  editProduct(dto: Product, file: File, success, failure) {
+    console.log(file);
+    if (!file) {
+      console.log(`${environment.agentApi}agent-product-service/api/product`);
+      this.http.put<Product>(`${environment.agentApi}agent-product-service/api/product`, dto).subscribe(
+        response => {
+          success();
+        }, error => {
+          console.log(error);
+          failure();
+        }
+      );
+      return;
+    }
+
+    this.uploadImage(file).subscribe(
+      response => {
+        dto.imagePath = response.url;
+        this.http.put<Product>(`${environment.agentApi}agent-product-service/api/product`, dto).subscribe(
+          serverResponse => {
+            success();
+          }, serverError => {
+            failure();
+          }
+        );
+      }
+    );
+
+  }
+
 }
