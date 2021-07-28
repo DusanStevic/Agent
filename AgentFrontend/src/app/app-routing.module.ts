@@ -7,12 +7,14 @@ import {ProductInfoComponent} from './product-info/product-info.component';
 import {EditProductComponent} from './edit-product/edit-product.component';
 
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'new-product', component: NewProductComponent},
   {path: 'product/:id', component: ProductInfoComponent},
-  {path: 'edit-product/:id', component: EditProductComponent}
+  {path: 'edit-product/:id', component: EditProductComponent},
+  {path: 'product/:id', component: ProductInfoComponent}
 ];
 
 @NgModule({
