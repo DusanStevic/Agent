@@ -7,6 +7,7 @@ import {ProductInfoComponent} from './product-info/product-info.component';
 import {EditProductComponent} from './edit-product/edit-product.component';
 import {BuyProductComponent} from './buy-product/buy-product.component';
 import {SuccessPurchaseComponent} from './success-purchase/success-purchase.component';
+import {ReportComponent} from './report/report.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'product/:id', component: ProductInfoComponent},
   {path: 'edit-product/:id', component: EditProductComponent},
   {path: 'buy/:id', component: BuyProductComponent},
-  {path: 'success', component: SuccessPurchaseComponent}
+  {path: 'success', component: SuccessPurchaseComponent},
+  {path: 'report', component: ReportComponent}
 ];
 
 @NgModule({

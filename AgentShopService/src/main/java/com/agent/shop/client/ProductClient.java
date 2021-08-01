@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @FeignClient(url = "http://localhost:8080/agent-product-service/api/product", name = "ProductClient")
 public interface ProductClient {
     @GetMapping("{id}")
     ProductDTO getProduct(@PathVariable("id") Long productId);
+    @GetMapping("")
+    List<ProductDTO> getProducts();
     @PutMapping
     ProductDTO editProduct(@RequestBody ProductDTO productDTO);
 }

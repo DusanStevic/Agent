@@ -31,4 +31,12 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  reports() {
+    this.router.navigateByUrl('report');
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
 }
