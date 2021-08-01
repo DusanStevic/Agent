@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Report} from '../model/Report';
 import {ReportProduct} from '../model/ReportProduct';
 import {ShopService} from '../service/shop.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-report',
@@ -10,7 +11,7 @@ import {ShopService} from '../service/shop.service';
 })
 export class ReportComponent implements OnInit {
 
-  constructor(private shopService: ShopService) {
+  constructor(private shopService: ShopService, private router: Router) {
   }
 
   mostSold: Array<ReportProduct> = [];
@@ -37,4 +38,7 @@ export class ReportComponent implements OnInit {
     return report.productResponse.sort((a, b) => b.profit - a.profit);
   }
 
+  back() {
+    this.router.navigateByUrl('');
+  }
 }
