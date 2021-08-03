@@ -5,6 +5,8 @@ import com.agent.shop.model.dto.ProductDTO;
 import com.agent.shop.model.dto.PurchaseRequest;
 import com.agent.shop.model.dto.ReportProductResponseDTO;
 import com.agent.shop.model.dto.ReportResponseDTO;
+import com.agent.shop.model.entity.Product;
+
 import com.agent.shop.model.entity.Purchase;
 import com.agent.shop.repository.PurchaseRepository;
 import org.springframework.stereotype.Service;

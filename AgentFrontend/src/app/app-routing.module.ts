@@ -10,6 +10,7 @@ import {SuccessPurchaseComponent} from './success-purchase/success-purchase.comp
 import {ReportComponent} from './report/report.component';
 
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},

@@ -29,6 +29,7 @@ public class Purchase {
     public Purchase() {
     }
 
+
     public Purchase(String name, String address, String phone, Long productId, Integer amount, Double total) {
         this.name = name;
         this.address = address;

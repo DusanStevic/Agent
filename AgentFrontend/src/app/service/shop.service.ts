@@ -7,6 +7,7 @@ import {environment} from '../../environments/environment';
 import {PurchaseRequest} from '../model/PurchaseRequest';
 import {PurchaseResponse} from '../model/PurchaseResponse';
 import {Report} from '../model/Report';
+=======
 
 @Injectable({
   providedIn: 'root'
@@ -23,4 +24,5 @@ export class ShopService {
   report(): Observable<Report> {
     return this.http.get<Report>(`${environment.agentApi}agent-shop-service/api/shop/report`);
   }
+
 }

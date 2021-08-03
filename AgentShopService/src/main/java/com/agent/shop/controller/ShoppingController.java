@@ -4,12 +4,15 @@ import com.agent.shop.model.dto.PurchaseRequest;
 import com.agent.shop.model.dto.PurchaseResponse;
 import com.agent.shop.model.dto.ReportProductResponseDTO;
 import com.agent.shop.model.dto.ReportResponseDTO;
+
 import com.agent.shop.model.entity.Purchase;
 import com.agent.shop.services.PurchaseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("api/shop")
@@ -32,4 +35,5 @@ public class ShoppingController {
         ReportResponseDTO reportResponseDTO = purchaseService.report();
         return new ResponseEntity<>(reportResponseDTO, HttpStatus.OK);
     }
+
 }
