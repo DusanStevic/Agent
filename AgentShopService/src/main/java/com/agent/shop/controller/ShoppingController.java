@@ -2,15 +2,15 @@ package com.agent.shop.controller;
 
 import com.agent.shop.model.dto.PurchaseRequest;
 import com.agent.shop.model.dto.PurchaseResponse;
+import com.agent.shop.model.dto.ReportProductResponseDTO;
+import com.agent.shop.model.dto.ReportResponseDTO;
+
 import com.agent.shop.model.entity.Purchase;
 import com.agent.shop.services.PurchaseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,4 +29,11 @@ public class ShoppingController {
         Purchase purchase = purchaseService.buy(purchaseRequest);
         return new ResponseEntity<>(new PurchaseResponse("Success", "200"), HttpStatus.OK);
     }
+
+    @GetMapping(value = "report", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ReportResponseDTO> report() {
+        ReportResponseDTO reportResponseDTO = purchaseService.report();
+        return new ResponseEntity<>(reportResponseDTO, HttpStatus.OK);
+    }
+
 }
