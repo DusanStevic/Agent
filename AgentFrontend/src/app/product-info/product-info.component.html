@@ -7,7 +7,7 @@
     <img *ngIf="product.imagePath" src="{{product.imagePath}}"  alt="">
     <img *ngIf="!product.imagePath" src="assets/No_Image_Available.jpg" alt="">
     <h4>Price: {{product.price}}</h4>
-    <button color="primary" class="buyButton" mat-raised-button *ngIf="product.available>0">Buy</button>
+    <button (click)="buy(product.id)" color="primary" class="buyButton" mat-raised-button *ngIf="product.available>0">Buy</button>
     <h4 *ngIf="product.available == 0">Out of stock</h4>
     <button (click)="editProduct()" mat-raised-button class="button-margin" *ngIf="loggedIn()">Edit</button>
     <button (click)="deleteProduct()" mat-raised-button class="button-margin" color="warn" *ngIf="loggedIn()">Delete</button>
