@@ -3,18 +3,19 @@ server:
 
 spring:
   application:
-    name: agent-product-service
+    name: agent-shop-service
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/agent
     username: root
     password: root
-    data: classpath:dataDev.sql
-    initialization-mode: never
+    data: classpath:dataScript.sql
+    initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
+
 jwt:
   secret: Agent
 
