@@ -43,8 +43,13 @@ export class ProductInfoComponent implements OnInit {
         this.router.navigateByUrl('');
       }
     );
+  }
   editProduct() {
     this.router.navigateByUrl('edit-product/' + this.id);
+  }
+
+  buy(id: number) {
+    this.router.navigateByUrl('buy/' + this.id);
   }
 
 }
