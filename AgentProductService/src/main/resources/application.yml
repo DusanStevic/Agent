@@ -10,10 +10,11 @@ spring:
     username: root
     password: root
     data: classpath:dataDev.sql
-    initialization-mode: never
+    initialization-mode: always
+    continue-on-error: true
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
 jwt:
   secret: Agent

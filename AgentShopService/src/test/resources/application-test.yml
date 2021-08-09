@@ -11,9 +11,13 @@ spring:
     password: root
     data: classpath:dataScript.sql
     initialization-mode: always
+    dbcp2:
+      test-while-idle: true
+      validation-query: SELECT 1
+    continue-on-error: true
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
 
 jwt:

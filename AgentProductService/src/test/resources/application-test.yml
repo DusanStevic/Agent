@@ -11,9 +11,10 @@ spring:
     password: root
     data: classpath:dataTest.sql
     initialization-mode: always
+    continue-on-error: true
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
     
 jwt:

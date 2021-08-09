@@ -46,7 +46,7 @@ public class ShoppingControllerTest {
     public void whenBuy_buy() {
         PurchaseRequest purchaseRequest = new PurchaseRequest();
         // This is needed to check if exists in same database where product is run
-        purchaseRequest.setProductId(2l);
+        purchaseRequest.setProductId(101l);
         purchaseRequest.setQuantity(1);
         purchaseRequest.setName("Pera");
         purchaseRequest.setAddress("Adresa");
