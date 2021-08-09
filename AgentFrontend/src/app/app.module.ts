@@ -19,6 +19,8 @@ import {TokenInterceptorService} from './service/token-interceptor-service';
 import { NewProductComponent } from './new-product/new-product.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductInfoComponent } from './product-info/product-info.component';
+import { BuyProductComponent } from './buy-product/buy-product.component';
+import { SuccessPurchaseComponent } from './success-purchase/success-purchase.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ProductInfoComponent } from './product-info/product-info.component';
     ProductComponent,
     NewProductComponent,
     ProductItemComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    BuyProductComponent,
+    SuccessPurchaseComponent
   ],
   imports: [
     BrowserModule,

@@ -21,4 +21,8 @@ export class ProductItemComponent implements OnInit {
     this.router.navigateByUrl('product/' + id);
   }
 
+  buy(id: number) {
+    this.router.navigateByUrl('buy/' + id);
+  }
+
 }
