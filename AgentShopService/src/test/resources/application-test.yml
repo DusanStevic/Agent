@@ -9,7 +9,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/agent
     username: root
     password: root
-    data: classpath:dataDev.sql
+    data: classpath:dataScript.sql
     initialization-mode: always
     dbcp2:
       test-while-idle: true
@@ -17,8 +17,9 @@ spring:
     continue-on-error: true
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
+
 jwt:
   secret: Agent
 

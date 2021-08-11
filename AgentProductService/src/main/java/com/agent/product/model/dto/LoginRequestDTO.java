@@ -1,4 +1,4 @@
-package com.agent.shop.model.dto;
+package com.agent.product.model.dto;
 
 public class LoginRequestDTO {
     private String username;
