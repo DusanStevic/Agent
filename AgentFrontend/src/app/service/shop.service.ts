@@ -21,7 +21,7 @@ export class ShopService {
   }
 
   report(): Observable<Report> {
-    return this.http.get<Report>(`${environment.agentApi}agent-shop-service/api/shop/report`);
+    return this.http.get<Report>(`${environment.agentApi}agent-report-service/api/report`);
   }
 
 }

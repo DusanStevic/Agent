@@ -3,14 +3,12 @@ server:
 
 spring:
   application:
-    name: agent-shop-service
+    name: agent-report-service
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/agent
     username: root
     password: root
-    data: classpath:dataDev.sql
-    initialization-mode: always
     dbcp2:
       test-while-idle: true
       validation-query: SELECT 1
@@ -19,6 +17,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
 jwt:
   secret: Agent
 
@@ -38,5 +37,8 @@ eureka:
     nonSecurePortEnabled: true
     securePortEnabled: false
     securePort: ${server.port}
+
 hostAddress:
+  shopping: http://localhost:8080/agent-shop-service/api/shop
   product: http://localhost:8080/agent-product-service/api/product
+

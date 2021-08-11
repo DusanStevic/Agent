@@ -35,3 +35,4 @@ eureka:
     nonSecurePortEnabled: true
     securePortEnabled: false
     securePort: ${server.port}
+hostAdress: localhost:8080

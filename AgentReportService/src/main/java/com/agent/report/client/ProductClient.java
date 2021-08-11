@@ -1,7 +1,6 @@
-package com.agent.shop.client;
+package com.agent.report.client;
 
-import com.agent.shop.model.dto.ProductDTO;
-import com.agent.shop.model.entity.Product;
+import com.agent.report.model.dto.ProductDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/shop")
@@ -30,10 +30,9 @@ public class ShoppingController {
         return new ResponseEntity<>(new PurchaseResponse("Success", "200"), HttpStatus.OK);
     }
 
-    @GetMapping(value = "report", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ReportResponseDTO> report() {
-        ReportResponseDTO reportResponseDTO = purchaseService.report();
-        return new ResponseEntity<>(reportResponseDTO, HttpStatus.OK);
+    @GetMapping(value = "purchases", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Purchase>> getPurchases() throws Exception {
+        List<Purchase> purchase = purchaseService.getPurchases();
+        return new ResponseEntity<>(purchase, HttpStatus.OK);
     }
-
 }

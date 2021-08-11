@@ -38,6 +38,10 @@ public class PurchaseService {
         return purchaseRepository.save(purchase);
     }
 
+    public List<Purchase> getPurchases() {
+        return purchaseRepository.findAll();
+    }
+
     public ReportResponseDTO report() {
         List<Purchase> purchaseList = purchaseRepository.findAll();
         List<ProductDTO> products = productClient.getProducts();
