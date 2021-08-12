@@ -15,6 +15,10 @@ spring:
           uri: lb://agent-product-service
           predicates:
             - Method=GET,POST
+        - id: agent-report-service
+          uri: lb://agent-report-service
+          predicates:
+            - Method=GET,POST
       # add routes here example :
       discovery:
         locator:
