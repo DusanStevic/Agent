@@ -103,4 +103,7 @@ To destroy infrastructure run the following command in **Git Bash**:
 ```shell
 docker-compose down -v
 ```
-
+Automatically remove (delete) Docker images
+```shell
+docker image prune -a
+```
