@@ -52,7 +52,7 @@ http://localhost:8080/api/shop/hello
 ```
 Response:
 ```
-Hello from product service with ip address 172.21.0.5!
+Hello from shop service with ip address 172.21.0.5!
 ```
 Request:
 ```http://localhost:8080/api/report/hello```  
