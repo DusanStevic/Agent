@@ -63,42 +63,7 @@ Response:
 ```
 Hello from report service with ip address 172.21.0.3!
 ```
-Fill H2 In-Memory Database with data using shell script. Run the following command in **Git Bash**
-```
-./web_requests.sh
-```
-Request:
-```GET http://localhost:8080/api/consumer/verify/1```  
-```
-http://localhost:8080/api/consumer/verify/1
-```
-Response:
-```
-true
-```
-Check if data is added to H2 In-Memory Database using the **H2 dashboard**
 
-**Consumer-Service** H2 In-Memory Database
-```
-http://localhost:9000/h2-console
-```
-```
-JDBC URL:jdbc:h2:mem:myDb → paste jdbc:h2:mem:myDb  → Test Connection  → Connect → Click CONSUMER table → Run
-```
-**Order-Service** H2 In-Memory Database
-```
-http://localhost:9001/h2-console
-```
-```
-JDBC URL:jdbc:h2:mem:myDb → paste jdbc:h2:mem:myDb  → Test Connection  → Connect → Click ORDER table → Run
-```
-**Kitchen-Service** H2 In-Memory Database
-```
-http://localhost:9002/h2-console
-```
-```
-JDBC URL:jdbc:h2:mem:myDb → paste jdbc:h2:mem:myDb  → Test Connection  → Connect → Click TICKET table → Run
-```
 To destroy infrastructure run the following command in **Git Bash**:
 ```shell
 docker-compose down -v
