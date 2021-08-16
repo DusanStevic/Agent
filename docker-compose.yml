@@ -28,6 +28,7 @@ services:
       - 9000:8080
     networks:
       - backend
+    restart: on-failure
 
   report-service:
     #image: danijelradakovic/order-service
@@ -44,6 +45,7 @@ services:
       PRODUCT_SERVICE_PORT: ${PRODUCT_SERVICE_PORT}
       SHOP_SERVICE_DOMAIN: ${SHOP_SERVICE_DOMAIN}
       SHOP_SERVICE_PORT: ${SHOP_SERVICE_PORT}
+    restart: on-failure
 
   shop-service:
     #image: danijelradakovic/kitchen-service
@@ -58,6 +60,7 @@ services:
     environment:
       PRODUCT_SERVICE_DOMAIN: ${PRODUCT_SERVICE_DOMAIN}
       PRODUCT_SERVICE_PORT: ${PRODUCT_SERVICE_PORT}
+    restart: on-failure
 
 
 networks:
