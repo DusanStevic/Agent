@@ -57,4 +57,4 @@ build/
 .vscode/
 
 # API keys and secrets
-.env
+#.env

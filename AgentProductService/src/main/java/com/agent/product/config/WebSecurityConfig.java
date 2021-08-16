@@ -61,10 +61,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 
                 // don't authenticate this particular request
-                .authorizeRequests().antMatchers("/auth/**").permitAll().antMatchers(HttpMethod.OPTIONS, "/api/**")
-                .permitAll()
-                .antMatchers(HttpMethod.GET, "/api/product", "/api/product/**")
-                .permitAll()
+                .authorizeRequests()
+                //.antMatchers("**").permitAll()
+                .antMatchers(HttpMethod.GET, "/hello", "**/hello").permitAll()
 
                 // all other requests need to be authenticated
                 .anyRequest().authenticated().and();
