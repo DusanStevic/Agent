@@ -37,31 +37,31 @@ docker-compose ps
 docker ps
 ```
 Request:
-```GET http://localhost:8080/api/consumer/hello```  
+```GET http://localhost:8080/api/product/hello```  
 ```
-http://localhost:8080/api/consumer/hello
+http://localhost:8080/api/product/hello
 ```
 Response:
 ```
-Hello from consumer service with ip address 172.18.0.3!
+Hello from product service with ip address 172.21.0.5!
 ```
 Request:
-```GET http://localhost:8080/api/kitchen/hello```  
+```GET http://localhost:8080/api/shop/hello```  
 ```
-http://localhost:8080/api/kitchen/hello
+http://localhost:8080/api/shop/hello
 ```
 Response:
 ```
-Hello from kitchen service with ip address 172.18.0.4!
+Hello from product service with ip address 172.21.0.5!
 ```
 Request:
-```GET http://localhost:8080/api/order/hello```  
+```http://localhost:8080/api/report/hello```  
 ```
-http://localhost:8080/api/order/hello
+http://localhost:8080/api/report/hello
 ```
 Response:
 ```
-Hello from order service with ip address 172.18.0.2!
+Hello from report service with ip address 172.21.0.3!
 ```
 Fill H2 In-Memory Database with data using shell script. Run the following command in **Git Bash**
 ```
