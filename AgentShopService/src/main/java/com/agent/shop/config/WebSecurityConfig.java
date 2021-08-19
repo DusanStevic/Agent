@@ -63,6 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // don't authenticate this particular request
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/hello").permitAll()
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
 
 
                 // all other requests need to be authenticated

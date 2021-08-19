@@ -21,7 +21,7 @@ public class ReportController {
         this.reportService = reportService;
     }
 
-    @GetMapping("/hello")
+    @GetMapping(value = "hello")
     public ResponseEntity<?> get() throws UnknownHostException {
         String ip = InetAddress.getLocalHost().getHostAddress();
         return new ResponseEntity<>(String.format("Hello from report service with ip address %s!", ip), HttpStatus.OK);

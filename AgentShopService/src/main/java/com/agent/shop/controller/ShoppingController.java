@@ -26,7 +26,7 @@ public class ShoppingController {
         this.purchaseService = purchaseService;
     }
 
-    @GetMapping("/hello")
+    @GetMapping(value = "hello")
     public ResponseEntity<?> get() throws UnknownHostException {
         String ip = InetAddress.getLocalHost().getHostAddress();
         return new ResponseEntity<>(String.format("Hello from shop service with ip address %s!", ip), HttpStatus.OK);
