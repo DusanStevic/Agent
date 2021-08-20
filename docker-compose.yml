@@ -110,6 +110,9 @@ services:
     image: agent-frontend
     ports:
       - '80:80'
+    environment:
+      NODE_ENV: ${NODE_ENV}
+
 volumes:
   database-data:
     name: server-database
