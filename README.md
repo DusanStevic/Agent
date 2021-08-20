@@ -34,6 +34,10 @@ Mapping environment variables from the **test** environment file to the **docker
 ```shell
 docker-compose --env-file config/.env.test config
 ```
+Mapping environment variables from the **prod** environment file to the **docker-compose.prod.yml** file
+```shell
+docker-compose --env-file config/.env.prod config
+```
 To setup an infrastructure for development environment run the following command in **Git Bash**:
 ```shell
 docker-compose --env-file config/.env.dev up --build
