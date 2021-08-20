@@ -3,6 +3,7 @@
 * Docker Compose
 * Microservices-architecture (Spring Boot - Java Framework)
 * Microservices Communication using Feign client as REST client
+* Docker staging and pom.xml profiles (dev, test, prod environments)
 * Mysql-database
 * Postgresql-database
 * Spring Boot (back-end)
@@ -21,13 +22,16 @@ Position yourself using **Git Bash** in the folder where `docker-compose.yml` fi
 ```
 cd DOCKER-COMPOSE_FILE_PATH
 ```
-Mapping environment variables from the environment file to the docker-compose.yml file (Check how your docker-compose.yml will finally look like, after environment variables substitution)
+Mapping environment variables from the environment file to the docker-compose.yml file (Check how your docker-compose.yml will finally look like, after environment variables substitution). Building container images can also be achieved using docker compose. Before running any docker compose command you should always check configuration using the following command:
 ```shell
-docker-compose --env-file .env config
+docker-compose --env-file config/.env.dev config
 ```
-To set up infrastructure run the following command in **Git Bash**:
 ```shell
-docker-compose up --build
+ovde dodaj za prod i test uputstva
+```
+To setup an infrastructure for dev environment run the following command in **Git Bash**:
+```shell
+docker-compose --env-file config/.env.dev up --build
 ```
 Docker-compose services/containers listing (one service one container)
 ```shell
