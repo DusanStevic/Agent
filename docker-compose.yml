@@ -24,6 +24,8 @@ services:
     build:
       context: ./AgentProductService
       dockerfile: Dockerfile
+      args:
+        STAGE: ${STAGE:-dev}
     restart: on-failure
     networks:
       - servers
@@ -44,6 +46,8 @@ services:
     build:
       context: ./AgentReportService
       dockerfile: Dockerfile
+      args:
+        STAGE: ${STAGE:-dev}
     restart: on-failure
     networks:
       - servers
@@ -70,6 +74,8 @@ services:
     build:
       context: ./AgentShopService
       dockerfile: Dockerfile
+      args:
+        STAGE: ${STAGE:-dev}
     restart: on-failure
     networks:
       - servers
