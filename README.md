@@ -25,15 +25,30 @@ Position yourself using **Git Bash** in the folder where `docker-compose.yml` fi
 cd DOCKER-COMPOSE_FILE_PATH
 ```
 Mapping environment variables from the environment file to the docker-compose.yml file (Check how your docker-compose.yml will finally look like, after environment variables substitution). Building container images can also be achieved using docker compose. Before running any docker compose command you should always check configuration using the following command:
+
+Mapping environment variables from the **dev** environment file to the **docker-compose.yml** file
 ```shell
 docker-compose --env-file config/.env.dev config
 ```
+Mapping environment variables from the **test** environment file to the **docker-compose.test.yml** file
 ```shell
-ovde dodaj za prod i test uputstva
+docker-compose --env-file config/.env.test config
 ```
-To setup an infrastructure for dev environment run the following command in **Git Bash**:
+Mapping environment variables from the **prod** environment file to the **docker-compose.prod.yml** file
+```shell
+docker-compose --env-file config/.env.prod config
+```
+To setup an infrastructure for development environment run the following command in **Git Bash**:
 ```shell
 docker-compose --env-file config/.env.dev up --build
+```
+To setup an infrastructure for test environment run the following command:
+```shell
+docker-compose --env-file config/.env.test -f docker-compose.yml -f docker-compose.test.yml up --build
+```
+To setup an infrastructure for production environment run the following command:
+```shell
+docker-compose --env-file config/.env.prod -f docker-compose.yml -f docker-compose.prod.yml up --build
 ```
 Docker-compose services/containers listing (one service one container)
 ```shell
