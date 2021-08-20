@@ -31,7 +31,7 @@ ovde dodaj za prod i test uputstva
 ```
 To set up infrastructure run the following command in **Git Bash**:
 ```shell
-docker-compose up --build
+docker-compose --env-file config/.env.dev up --build
 ```
 Docker-compose services/containers listing (one service one container)
 ```shell
