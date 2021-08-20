@@ -103,6 +103,13 @@ services:
     volumes:
       - database-data:/var/lib/mysql
 
+  frontend:
+    build:
+      context: ./AgentFrontend
+      dockerfile: Dockerfile
+    image: agent-frontend
+    ports:
+      - '80:80'
 volumes:
   database-data:
     name: server-database
