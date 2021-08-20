@@ -3,6 +3,7 @@
 * Docker Compose
 * Microservices-architecture (Spring Boot - Java Framework)
 * Microservices Communication using Feign client as REST client
+* Docker staging and pom.xml profiles (dev, test, prod environments)
 * Mysql-database
 * Postgresql-database
 * Spring Boot (back-end)
