@@ -34,9 +34,17 @@ Mapping environment variables from the **test** environment file to the **docker
 ```shell
 docker-compose --env-file config/.env.test config
 ```
-To setup an infrastructure for dev environment run the following command in **Git Bash**:
+To setup an infrastructure for development environment run the following command in **Git Bash**:
 ```shell
 docker-compose --env-file config/.env.dev up --build
+```
+To setup an infrastructure for test environment run the following command:
+```shell
+docker-compose --env-file config/.env.test -f docker-compose.yml -f docker-compose.test.yml up --build
+```
+To setup an infrastructure for production environment run the following command:
+```shell
+docker-compose --env-file config/.env.prod -f docker-compose.yml -f docker-compose.prod.yml up --build
 ```
 Docker-compose services/containers listing (one service one container)
 ```shell
