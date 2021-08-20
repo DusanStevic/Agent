@@ -11,6 +11,8 @@
 * Platform-Provided Service Discovery (Deployment infrastructure take care of service discovery)
 * Service-discovery (Docker-DNS)
 * API-gateway (NGINX)
+* Using NGINX in the backend as a reverse proxy
+* Using NGINX in the frontend as a web server for displaying the static content of the dist folder
 * Shell Scripting
 
 # Agent Instructions
