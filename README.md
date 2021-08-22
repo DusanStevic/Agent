@@ -93,3 +93,8 @@ Automatically remove (delete) Docker images
 ```shell
 docker image prune -a
 ```
+docker hub npm ubrzanje
+Automatically remove (delete) Docker images
+```shell
+docker image build -f Dockerfile.base -t stevicdule/npm-base-agent-frontend:1.0.0 .
+```
