@@ -1,5 +1,5 @@
 # Stage 1: Build an Angular Docker Image
-FROM node as build
+FROM stevicdule/npm-base-agent-frontend:1.0.0-dev as build
 WORKDIR /app
 COPY package*.json /app/
 RUN npm install
