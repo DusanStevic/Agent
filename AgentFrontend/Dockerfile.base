@@ -2,8 +2,9 @@ FROM node:alpine3.11
 
 LABEL maintainer="stevicdule@gmail.com"
 
-# Create app directory
-WORKDIR /usr/src/app
+# Create app directory. This directory must have the same name as the directory in Dockerfile file /app.
+# Our application will be copied in the same directory where npm dependencies are installed
+WORKDIR /app
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
