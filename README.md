@@ -98,9 +98,11 @@ docker image prune -a
 ```
 # Artifacts
 ## The first type of artifacts: npm base image (npm dependencies download acceleration)
+Build npm base image
 ```shell
 docker image build -f Dockerfile.base -t stevicdule/npm-base-agent-frontend:1.0.0-dev .
 ```
+Push your npm base image to Docker Hub
 ```shell
 docker push stevicdule/npm-base-agent-frontend:1.0.0-dev
 ```
