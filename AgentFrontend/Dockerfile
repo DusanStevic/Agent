@@ -1,8 +1,12 @@
 # Stage 1: Build an Angular Docker Image
-FROM node as build
+FROM stevicdule/npm-base-agent-frontend:1.0.0-dev as build
+# Create app directory. This directory must have the same name as the directory in Dockerfile.base file /app.
+# Our application will be copied in the same directory where npm dependencies are installed
 WORKDIR /app
-COPY package*.json /app/
-RUN npm install
+# No need to download again npm dependencies,
+# you will use dependencies from npm base image that already have installed those dependencies
+# COPY package*.json /app/
+# RUN npm install
 COPY . /app
 ARG NODE_ENV
 RUN npm run build -- --outputPath=./dist/out --configuration ${NODE_ENV}

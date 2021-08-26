@@ -14,6 +14,10 @@
 * Using NGINX in the backend as a reverse proxy
 * Using NGINX in the frontend as a web server for displaying the static content of the dist folder
 * Shell Scripting
+* 3 types of artifacts:
+  * The first type of artifacts: **npm base image** (npm dependencies download acceleration) published on **Docker Hub**
+  * The first type of artifacts: **mvn base image** (mvn dependencies download acceleration) published on **Docker Hub**
+* Heroku
 
 # Agent Instructions
 **Start Docker Daemon:** If you're using Docker for Windows, Then simply start the desktop app installed in:
@@ -93,11 +97,16 @@ Automatically remove (delete) Docker images
 ```shell
 docker image prune -a
 ```
-docker hub npm ubrzanje
-Automatically remove (delete) Docker images
+
+# Artifacts
+## The first type of artifacts: npm base image (npm dependencies download acceleration) published on Docker Hub
+Build npm base image
 ```shell
-docker image build -f Dockerfile.base -t stevicdule/npm-base-agent-frontend:1.0.0 .
+docker image build -f Dockerfile.base -t stevicdule/npm-base-agent-frontend:1.0.0-dev .
 ```
+Push your npm base image to Docker Hub
 ```shell
-docker push stevicdule/npm-base-agent-frontend:1.0.0
+docker push stevicdule/npm-base-agent-frontend:1.0.0-dev
 ```
+## The first type of artifacts: mvn base image (mvn dependencies download acceleration) published on Docker Hub
+
