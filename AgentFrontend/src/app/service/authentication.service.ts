@@ -14,6 +14,6 @@ export class AuthenticationService {
   }
 
   login(loginRequest: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${environment.agentApi}agent-shop-service/auth/login`, loginRequest);
+    return this.http.post<LoginResponse>(`${environment.agentApi}api/shop/login`, loginRequest);
   }
 }

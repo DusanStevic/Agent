@@ -12,14 +12,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @RestController
-@RequestMapping(value = "api/product")
 public class ProductController {
 
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
         this.productService = productService;
+    }
+
+    @GetMapping(value = "hello")
+    public ResponseEntity<?> get() throws UnknownHostException {
+        String ip = InetAddress.getLocalHost().getHostAddress();
+        return new ResponseEntity<>(String.format("Hello from product service with ip address %s!", ip), HttpStatus.OK);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

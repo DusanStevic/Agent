@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient(url = "${hostAddress.shopping}", name = "ShoppingClient")
+// app.shop.url from application.properties
+@FeignClient(name = "shop", url = "${app.shop.url}")
 public interface PurchaseClient {
 
     @GetMapping(value = "purchases", produces = MediaType.APPLICATION_JSON_VALUE)
