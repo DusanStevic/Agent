@@ -15,8 +15,8 @@
 * Using NGINX in the frontend as a web server for displaying the static content of the dist folder
 * Shell Scripting
 * 3 types of artifacts:
-  * The first type of artifacts: npm base image (npm dependencies download acceleration) published on Docker Hub
-  * The first type of artifacts: mvn base image (mvn dependencies download acceleration) published on Docker Hub
+  * The first type of artifacts: **npm base image** (npm dependencies download acceleration) published on **Docker Hub**
+  * The first type of artifacts: **mvn base image** (mvn dependencies download acceleration) published on **Docker Hub**
 * Heroku
 
 # Agent Instructions
