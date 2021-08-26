@@ -98,7 +98,7 @@ Automatically remove (delete) Docker images
 docker image prune -a
 ```
 # Artifacts
-## The first type of artifacts: npm base image (npm dependencies download acceleration)
+## The first type of artifacts: npm base image (npm dependencies download acceleration) published on Docker Hub
 Build npm base image
 ```shell
 docker image build -f Dockerfile.base -t stevicdule/npm-base-agent-frontend:1.0.0-dev .
@@ -107,3 +107,4 @@ Push your npm base image to Docker Hub
 ```shell
 docker push stevicdule/npm-base-agent-frontend:1.0.0-dev
 ```
+## The first type of artifacts: mvn base image (mvn dependencies download acceleration) published on Docker Hub
