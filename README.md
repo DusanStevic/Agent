@@ -109,4 +109,23 @@ Push your npm base image to Docker Hub
 docker push stevicdule/npm-base-agent-frontend:1.0.0-dev
 ```
 ## The first type of artifacts: mvn base image (mvn dependencies download acceleration) published on Docker Hub
-
+Build mvn base image
+```shell
+docker image build -f Dockerfile.base --build-arg STAGE=dev -t stevicdule/mvn-base-agent-product:1.0.0-dev .
+```
+```shell
+docker image build -f Dockerfile.base --build-arg STAGE=dev -t stevicdule/mvn-base-agent-report:1.0.0-dev .
+```
+```shell
+docker image build -f Dockerfile.base --build-arg STAGE=dev -t stevicdule/mvn-base-agent-shop:1.0.0-dev .
+```
+Push your mvn base image to Docker Hub
+```shell
+docker push stevicdule/mvn-base-agent-product:1.0.0-dev
+```
+```shell
+docker push stevicdule/mvn-base-agent-report:1.0.0-dev
+```
+```shell
+docker push stevicdule/mvn-base-agent-shop:1.0.0-dev
+```
