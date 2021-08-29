@@ -1,10 +1,14 @@
-FROM maven:3.6.3-ibmjava-8-alpine AS appBuild
-
+# The final image build process will use this build image as a base image
+# that will already have all the dependencies inside it. Even if there is a new dependency
+# added in pom.xml the final image will only download that delta dependency as the rest of the
+# dependencies would already be present via base builder image.
+FROM stevicdule/mvn-base-agent-report:1.0.0-dev AS appBuild
+ARG STAGE=dev
 LABEL maintainer="stevicdule@gmail.com"
 
 WORKDIR /usr/src/report_service
 COPY . .
-RUN mvn package -DskipTests
+RUN mvn package -P${STAGE} -DskipTests
 
 FROM openjdk:8-jdk-alpine AS appRuntime
 WORKDIR /app
