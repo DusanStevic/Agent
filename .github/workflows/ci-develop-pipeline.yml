@@ -1,10 +1,11 @@
 name: Analyze code with Sonar Cloud
 on:
-  pull_request:
+  push:
     branches:
-      - main
-      - development
-    types: [opened, synchronize]
+      - master
+      - develop
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   # Analyze code with Sonar Cloud
