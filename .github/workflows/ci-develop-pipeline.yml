@@ -7,6 +7,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+
     test:
       name: Unit Test
       runs-on: ubuntu-18.04
@@ -18,6 +19,6 @@ jobs:
           with:
             java-version: 1.11
         - name: Maven Package
-          run: mvn -B clean package -DskipTests
+          run: mvn -Pdev -f AgentShopService/pom.xml -B clean package -DskipTests
         - name: Maven Verify
-          run: mvn -B clean verify
+          run: mvn -Pdev -f AgentShopService/pom.xml -B clean verify
