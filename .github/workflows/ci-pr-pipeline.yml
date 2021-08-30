@@ -5,6 +5,7 @@ on:
       - develop
     types: [opened, synchronize, reopened]
 jobs:
+  # testove dodaj
   # Analyze code with Sonar Cloud
   sonar_product_service: # Generated using Sonar Cloud Maven build template
     name: Test - SonarCloud scan (analysis) of product service
