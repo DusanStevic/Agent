@@ -5,7 +5,7 @@ on:
       - develop
     types: [opened, synchronize, reopened]
 jobs:
-  # testove dodaj adad
+  # testove dod
   # Analyze code with Sonar Cloud
   sonar_agent_frontend: # Generated using SonarCloud Other (for JS, TS, Go, Python, PHP, ...) build template
     name: Test - SonarCloud scan (analysis) of agent frontend
