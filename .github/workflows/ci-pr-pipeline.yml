@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   # Analyze code with Sonar Cloud
-  sonar_product_service:
+  sonar_product_service: # Generated using Sonar Cloud Maven build template
     name: Test - SonarCloud scan (analysis) of product service
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +36,7 @@ jobs:
         # -Pdev activate dev profile -f path/to/pom.xml
         run: mvn -Pdev -f AgentProductService/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DusanStevic_Agent
 
-  sonar_report_service:
+  sonar_report_service: # Generated using Sonar Cloud Maven build template
     name: Test - SonarCloud scan (analysis) of report service
     runs-on: ubuntu-latest
     steps:
@@ -66,7 +66,7 @@ jobs:
         # -Pdev activate dev profile -f path/to/pom.xml
         run: mvn -Pdev -f AgentReportService/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DusanStevic_Agent
 
-  sonar_shop_service:
+  sonar_shop_service: # Generated using Sonar Cloud Maven build template
     name: Test - SonarCloud scan (analysis) of shop service
     runs-on: ubuntu-latest
     steps:
@@ -95,3 +95,16 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         # -Pdev activate dev profile -f path/to/pom.xml
         run: mvn -Pdev -f AgentShopService/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DusanStevic_Agent
+
+  sonar_agent_frontend: # Generated using Sonar Cloud Other (for JS, TS, Go, Python, PHP, ...) build template
+    name: Test - SonarCloud scan (analysis) of agent frontend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
