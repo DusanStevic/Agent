@@ -28,7 +28,14 @@ jobs:
         run: mvn -Ptest -f AgentReportService/pom.xml -B clean package -DskipTests
       - name: Maven Verify report service
         # -Ptest activate test profile -f path/to/pom.xml
-        run: mvn -Ptest -f AgentReportService/pom.xml -B clean verify 
+        run: mvn -Ptest -f AgentReportService/pom.xml -B clean verify
+        # Test - Units & Integrations shop service
+      - name: Maven Package shop service
+        # -Ptest activate test profile -f path/to/pom.xml
+        run: mvn -Ptest -f AgentShopService/pom.xml -B clean package -DskipTests
+      - name: Maven Verify shop service
+        # -Ptest activate test profile -f path/to/pom.xml
+        run: mvn -Ptest -f AgentShopService/pom.xml -B clean verify
   # Analyze code with Sonar Cloud
   sonar_product_service: # Generated using Sonar Cloud Maven build template
     name: Test - SonarCloud scan (analysis) of product service
