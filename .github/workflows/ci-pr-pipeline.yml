@@ -97,7 +97,7 @@ jobs:
         # -Pdev activate dev profile -f path/to/pom.xml
         run: mvn -Pdev -f AgentShopService/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DusanStevic_Agent
 
-  sonar_agent_frontend: # Generated using Sonar Cloud Other (for JS, TS, Go, Python, PHP, ...) build template
+  sonar_agent_frontend: # Generated using SonarCloud Other (for JS, TS, Go, Python, PHP, ...) build template
     name: Test - SonarCloud scan (analysis) of agent frontend
     runs-on: ubuntu-latest
     steps:
