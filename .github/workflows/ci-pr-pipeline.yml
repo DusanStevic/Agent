@@ -99,6 +99,7 @@ jobs:
 
   sonar_agent_frontend: # Generated using SonarCloud Other (for JS, TS, Go, Python, PHP, ...) build template
     name: Test - SonarCloud scan (analysis) of agent frontend
+    needs: [sonar_shop_service, sonar_report_service, sonar_product_service]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
