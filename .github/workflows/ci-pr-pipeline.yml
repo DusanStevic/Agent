@@ -5,6 +5,7 @@ on:
       - develop
     types: [opened, synchronize, reopened]
 jobs:
+  # Analyze code with Sonar Cloud
   sonar_product_service:
     name: Test - SonarCloud scan (analysis) of product service
     runs-on: ubuntu-latest
