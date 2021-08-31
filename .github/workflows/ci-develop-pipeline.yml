@@ -1,5 +1,5 @@
 # source: https://faun.pub/continuous-integration-of-java-project-with-github-actions-7a8a0e8246ef
-name: CI push develop branch pipeline
+name: CI PUSH develop branch pipeline
 on:
   push:
     branches:
