@@ -11,6 +11,7 @@ jobs:
     name: Test - Units & Integrations
     runs-on: ubuntu-latest
     strategy:
+      # A matrix allows you to create multiple jobs by performing variable substitution in a single job definition
       matrix: { dir: [ 'AgentProductService', 'AgentReportService','AgentShopService' ] }
     steps:
       - uses: actions/checkout@v2
