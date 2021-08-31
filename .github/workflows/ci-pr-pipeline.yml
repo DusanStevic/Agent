@@ -1,3 +1,4 @@
+# source: https://faun.pub/continuous-integration-of-java-project-with-github-actions-7a8a0e8246ef
 name: CI PR develop branch pipeline
 on:
   pull_request:
@@ -5,7 +6,38 @@ on:
       - develop
     types: [opened, synchronize, reopened]
 jobs:
-  # testove dodaj
+  # Test - Units & Integrations
+  test:
+    name: Test - Units & Integrations
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+        # Test - Units & Integrations product service
+      - name: Maven Package product service
+        # -Ptest activate test profile -f path/to/pom.xml
+        run: mvn -Ptest -f AgentProductService/pom.xml -B clean package -DskipTests
+      - name: Maven Verify product service
+        # -Ptest activate test profile -f path/to/pom.xml
+        run: mvn -Ptest -f AgentProductService/pom.xml -B clean verify
+        # Test - Units & Integrations report service
+      - name: Maven Package report service
+        # -Ptest activate test profile -f path/to/pom.xml
+        run: mvn -Ptest -f AgentReportService/pom.xml -B clean package -DskipTests
+      - name: Maven Verify report service
+        # -Ptest activate test profile -f path/to/pom.xml
+        run: mvn -Ptest -f AgentReportService/pom.xml -B clean verify
+        # Test - Units & Integrations shop service
+      - name: Maven Package shop service
+        # -Ptest activate test profile -f path/to/pom.xml
+        run: mvn -Ptest -f AgentShopService/pom.xml -B clean package -DskipTests
+      - name: Maven Verify shop service
+        # -Ptest activate test profile -f path/to/pom.xml
+        run: mvn -Ptest -f AgentShopService/pom.xml -B clean verify
   # Analyze code with Sonar Cloud
   sonar_product_service: # Generated using Sonar Cloud Maven build template
     name: Test - SonarCloud scan (analysis) of product service
