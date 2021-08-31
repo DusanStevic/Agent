@@ -100,6 +100,10 @@ jobs:
   sonar_agent_frontend: # Generated using Sonar Cloud Other (for JS, TS, Go, Python, PHP, ...) build template
     name: Test - SonarCloud scan (analysis) of agent frontend
     runs-on: ubuntu-latest
+    # Prevents: The date of analysis cannot be older than the date of the last known analysis on this project.
+    # Value: "2021-08-30T19:30:38+0000". Latest analysis: "2021-08-30T19:30:54+0000". It's only possible to
+    # rebuild the past in chronological order.
+    needs: [sonar_product_service, sonar_report_service, sonar_shop_service]
     steps:
       - uses: actions/checkout@v2
         with:
