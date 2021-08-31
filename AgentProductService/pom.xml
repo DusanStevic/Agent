@@ -128,5 +128,12 @@
 		</plugins>
 		<finalName>${appName}</finalName>
 	</build>
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>Agent Product service GitHub Package</name>
+			<url>https://maven.pkg.github.com/DusanStevic/Agent</url>
+		</repository>
+	</distributionManagement>
 
 </project>
