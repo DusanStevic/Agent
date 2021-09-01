@@ -11,7 +11,7 @@ PURCHASES=${DOCKERHUB_USERNAME}/agent-shop-service:${VERSION}
 #GATEWAY=${DOCKERHUB_USERNAME}/gateway:${VERSION}
 
 cd AgentProductService
-DOCKER_BUILDKIT=1 docker build -t ${PRODUCTS} --no-cache .
+docker build -t ${PRODUCTS} --no-cache .
 
 #cd ../reports
 #DOCKER_BUILDKIT=1 docker build -t ${REPORTS} --no-cache .
