@@ -54,7 +54,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Build product service docker image
         working-directory: ./AgentProductService
-        run: docker build -t ${{ secrets.DOCKER_USER }}/product-service:latest --no-cache .
+        run: docker build -t ${{ secrets.DOCKER_USER }}/product-service:proba --no-cache .
 #      - name: Build shopping service docker image
 #        working-directory:  ./shopping-service
 #        run: docker build -t ${{ secrets.DOCKER_USER }}/shopping-service:${{ steps.tag_version.outputs.new_tag }} --no-cache .
@@ -69,7 +69,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
       - name: Publish Docker images
         run: |
-          docker push  ${{ secrets.DOCKER_USER }}/product-service:latest
+          docker push  ${{ secrets.DOCKER_USER }}/product-service:proba
 #          docker push  ${{ secrets.DOCKER_USER }}/shopping-service:${{ steps.tag_version.outputs.new_tag }}
 #          docker push  ${{ secrets.DOCKER_USER }}/report-service:${{ steps.tag_version.outputs.new_tag }}
 #          docker push  ${{ secrets.DOCKER_USER }}/gateway-agent:${{ steps.tag_version.outputs.new_tag }}
