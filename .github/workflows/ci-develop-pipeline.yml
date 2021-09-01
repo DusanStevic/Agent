@@ -52,8 +52,8 @@ jobs:
 
     steps:
       - name: Build product service docker image
-        working-directory: AgentProductService
-        run: docker build -t ${{ secrets.DOCKER_USER }}/product-service::latest --no-cache .
+        working-directory: ./AgentProductService
+        run: docker build -t ${{ secrets.DOCKER_USER }}/product-service:${{ steps.tag_version.outputs.new_tag }} --no-cache .
 #      - name: Build shopping service docker image
 #        working-directory:  ./shopping-service
 #        run: docker build -t ${{ secrets.DOCKER_USER }}/shopping-service:${{ steps.tag_version.outputs.new_tag }} --no-cache .
