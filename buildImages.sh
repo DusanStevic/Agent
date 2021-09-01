@@ -8,7 +8,7 @@ DOCKERHUB_PASSWORD=${3}
 PRODUCT=${DOCKERHUB_USERNAME}/agent-product-service:${VERSION}
 REPORT=${DOCKERHUB_USERNAME}/agent-report-service:${VERSION}
 SHOP=${DOCKERHUB_USERNAME}/agent-shop-service:${VERSION}
-#GATEWAY=${DOCKERHUB_USERNAME}/gateway:${VERSION}
+FRONTEND=${DOCKERHUB_USERNAME}/agent-frontend:${VERSION}
 
 cd AgentProductService
 DOCKER_BUILDKIT=1 docker build -t ${PRODUCT} --no-cache .
@@ -19,6 +19,9 @@ DOCKER_BUILDKIT=1 docker build -t ${REPORT} --no-cache .
 cd ../AgentShopService
 DOCKER_BUILDKIT=1 docker build -t ${SHOP} --no-cache .
 
+cd ../AgentFrontend
+DOCKER_BUILDKIT=1 docker build -t ${FRONTEND} --no-cache .
+
 #DOCKER_BUILDKIT=1 docker build -t ${GATEWAY} --no-cache -f ./gateway/Dockerfile .
 
 docker login --username ${DOCKERHUB_USERNAME} --password ${DOCKERHUB_PASSWORD}
@@ -26,4 +29,4 @@ docker login --username ${DOCKERHUB_USERNAME} --password ${DOCKERHUB_PASSWORD}
 docker push ${PRODUCT}
 docker push ${REPORT}
 docker push ${SHOP}
-#docker push ${GATEWAY}
+docker push ${FRONTEND}
