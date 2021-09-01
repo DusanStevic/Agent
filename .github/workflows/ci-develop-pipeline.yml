@@ -52,4 +52,4 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build product service docker image
-        run: bash ./buildImages.sh ${{ needs.prerelease.outputs.tag_name }} ${{ secrets.DOCKER_USER }} ${{ secrets.DOCKER_PASS }}
+        run: bash ./publish-dockerhub.sh ${{ needs.prerelease.outputs.tag_name }} ${{ secrets.DOCKER_USER }} ${{ secrets.DOCKER_PASS }}
