@@ -10,7 +10,7 @@ PRODUCTS=${DOCKERHUB_USERNAME}/agent-product-service:${VERSION}
 #PURCHASES=${DOCKERHUB_USERNAME}/agent-shop-service:${VERSION}
 #GATEWAY=${DOCKERHUB_USERNAME}/gateway:${VERSION}
 
-cd AgentProductService
+cd ./AgentProductService
 docker build -t ${PRODUCTS} --no-cache .
 
 #cd ../reports
