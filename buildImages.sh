@@ -21,7 +21,7 @@ docker build -t ${PRODUCTS} --no-cache .
 
 #DOCKER_BUILDKIT=1 docker build -t ${GATEWAY} --no-cache -f ./gateway/Dockerfile .
 
-docker login --username=${DOCKERHUB_USERNAME} --password=${DOCKERHUB_PASSWORD}
+docker login -u ${{ DOCKERHUB_USERNAME }} -p ${{ DOCKERHUB_PASSWORD }}
 
 docker push ${PRODUCTS}
 #docker push ${REPORTS}
