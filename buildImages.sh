@@ -5,25 +5,25 @@ DOCKERHUB_USERNAME=${2}
 DOCKERHUB_PASSWORD=${3}
 
 
-PRODUCTS=${DOCKERHUB_USERNAME}/agent-product-service:${VERSION}
-#REPORTS=${DOCKERHUB_USERNAME}/agent-report-service:${VERSION}
-#PURCHASES=${DOCKERHUB_USERNAME}/agent-shop-service:${VERSION}
 #GATEWAY=${DOCKERHUB_USERNAME}/gateway:${VERSION}
+PRODUCTS=${DOCKERHUB_USERNAME}/products:${VERSION}
+#PURCHASES=${DOCKERHUB_USERNAME}/purchases:${VERSION}
+#REPORTS=${DOCKERHUB_USERNAME}/reports:${VERSION}
 
-cd ./AgentProductService
-docker build -t ${PRODUCTS} --no-cache .
+#DOCKER_BUILDKIT=1 docker build -t ${GATEWAY} --no-cache -f ./gateway/Dockerfile .
 
-#cd ../reports
-#DOCKER_BUILDKIT=1 docker build -t ${REPORTS} --no-cache .
+cd AgentProductService
+DOCKER_BUILDKIT=1 docker build -t ${PRODUCTS} --no-cache .
 
 #cd ../purchases
 #DOCKER_BUILDKIT=1 docker build -t ${PURCHASES} --no-cache .
 
-#DOCKER_BUILDKIT=1 docker build -t ${GATEWAY} --no-cache -f ./gateway/Dockerfile .
+#cd ../reports
+#DOCKER_BUILDKIT=1 docker build -t ${REPORTS} --no-cache .
 
-docker login -u ${{ DOCKERHUB_USERNAME }} -p ${{ DOCKERHUB_PASSWORD }}
 
-docker push ${PRODUCTS}
-#docker push ${REPORTS}
-#docker push ${PURCHASES}
+docker login --username ${DOCKERHUB_USERNAME} --password=${DOCKERHUB_PASSWORD}
 #docker push ${GATEWAY}
+docker push ${PRODUCTS}
+#docker push ${PURCHASES}
+#docker push ${REPORTS}
