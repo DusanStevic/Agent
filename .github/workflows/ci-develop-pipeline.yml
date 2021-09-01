@@ -25,10 +25,12 @@ jobs:
           release_name: Prerelease ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
           prerelease: true
-      - name: Build product service docker image
+      #- name: Build product service docker image
+        #run: ./buildImages.sh ${{ steps.tag_version.outputs.new_tag }} ${{ secrets.DOCKER_USER }} ${{ secrets.DOCKER_PASS }}
+      - name: Build docker images
         run: ./buildImages.sh ${{ steps.tag_version.outputs.new_tag }} ${{ secrets.DOCKER_USER }} ${{ secrets.DOCKER_PASS }}
-    outputs:
-      tag_name: ${{ steps.tag_version.outputs.new_tag }}
+    #outputs:
+      #tag_name: ${{ steps.tag_version.outputs.new_tag }}
 
   artifact:
     name: Publish - GitHub Packages
