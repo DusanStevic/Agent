@@ -51,6 +51,7 @@ jobs:
       #REPO: ${{ secrets.DOCKER_REPO }}
 
     steps:
+      - uses: actions/checkout@v1
       - name: Build product service docker image
         working-directory: ./AgentProductService
         run: docker build -t ${{ secrets.DOCKER_USER }}/product-service:${{ steps.tag_version.outputs.new_tag }} --no-cache .
