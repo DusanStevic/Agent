@@ -22,8 +22,6 @@ DOCKER_BUILDKIT=1 docker build -t ${SHOP} --no-cache .
 cd ../AgentFrontend
 DOCKER_BUILDKIT=1 docker build -t ${FRONTEND} --no-cache .
 
-#DOCKER_BUILDKIT=1 docker build -t ${GATEWAY} --no-cache -f ./gateway/Dockerfile .
-
 docker login --username ${DOCKERHUB_USERNAME} --password ${DOCKERHUB_PASSWORD}
 
 docker push ${PRODUCT}
