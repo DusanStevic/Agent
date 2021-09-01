@@ -53,6 +53,6 @@ jobs:
     #REPO: ${{ secrets.DOCKER_REPO }}
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Build product service docker image
         run: ./buildImages.sh ${{ 2 }} ${{ secrets.DOCKER_USER }} ${{ secrets.DOCKER_PASS }}
