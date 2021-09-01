@@ -23,7 +23,7 @@ DOCKER_BUILDKIT=1 docker build -t ${PRODUCTS} --no-cache .
 
 
 #docker login --username ${DOCKERHUB_USERNAME} --password=${DOCKERHUB_PASSWORD}
-docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD }
+docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}
 #docker login -u ${2} -p ${3}
 #docker push ${GATEWAY}
 docker push ${PRODUCTS}
