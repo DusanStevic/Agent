@@ -5,10 +5,10 @@ DOCKERHUB_USERNAME=${2}
 DOCKERHUB_PASSWORD=${3}
 
 
-PRODUCT=${DOCKERHUB_USERNAME}/agent-product-service:${VERSION}
-REPORT=${DOCKERHUB_USERNAME}/agent-report-service:${VERSION}
-SHOP=${DOCKERHUB_USERNAME}/agent-shop-service:${VERSION}
-FRONTEND=${DOCKERHUB_USERNAME}/agent-frontend:${VERSION}
+PRODUCT=${DOCKERHUB_USERNAME}/agent-product-service-proba:${VERSION}
+REPORT=${DOCKERHUB_USERNAME}/agent-report-service-proba:${VERSION}
+SHOP=${DOCKERHUB_USERNAME}/agent-shop-service-proba:${VERSION}
+FRONTEND=${DOCKERHUB_USERNAME}/agent-frontend-proba:${VERSION}
 
 cd AgentProductService
 DOCKER_BUILDKIT=1 docker build -t ${PRODUCT} --no-cache .
