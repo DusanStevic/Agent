@@ -42,34 +42,3 @@ jobs:
         run: mvn -B clean deploy -DskipTests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  docker:
-    name: Publish - Docker Hub
-    runs-on: ubuntu-18.04
-    #needs: [test, sonar]
-    #env:
-      #REPO: ${{ secrets.DOCKER_REPO }}
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Build product service docker image
-        working-directory: ./AgentProductService
-        run: docker build -t ${{ secrets.DOCKER_USER }}/shop-service:proba --no-cache .
-#      - name: Build shopping service docker image
-#        working-directory:  ./shopping-service
-#        run: docker build -t ${{ secrets.DOCKER_USER }}/shopping-service:${{ steps.tag_version.outputs.new_tag }} --no-cache .
-#      - name: Build report service docker image
-#        working-directory:  ./report-service
-#        run: docker build -t ${{ secrets.DOCKER_USER }}/report-service:${{ steps.tag_version.outputs.new_tag }} --no-cache .
-#      - name: Build gateway service docker image
-#        working-directory:  ./
-#        run: docker build -t ${{ secrets.DOCKER_USER }}/gateway-agent:${{ steps.tag_version.outputs.new_tag }} -f ./Gateway/Dockerfile.prod --no-cache .
-
-      - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
-      - name: Publish Docker images
-        run: |
-          docker push  ${{ secrets.DOCKER_USER }}/shop-service:proba
-#          docker push  ${{ secrets.DOCKER_USER }}/shopping-service:${{ steps.tag_version.outputs.new_tag }}
-#          docker push  ${{ secrets.DOCKER_USER }}/report-service:${{ steps.tag_version.outputs.new_tag }}
-#          docker push  ${{ secrets.DOCKER_USER }}/gateway-agent:${{ steps.tag_version.outputs.new_tag }}
