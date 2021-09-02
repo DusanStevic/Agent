@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+
+    <span class="spacer"></span>
+    <div *ngIf="getLoggedIn()">
+      <button mat-button (click)="logOut()"><i class="fa fa-users fa-2x" aria-hidden="true"></i>Log out</button>
+    </div>
+    <div *ngIf="!getLoggedIn()">
+      <button mat-button (click)="logIn()"><i class="fa fa-home fa-2x" aria-hidden="true"> </i>Log In</button>
+      </div>
+  </mat-toolbar-row>
+</mat-toolbar>

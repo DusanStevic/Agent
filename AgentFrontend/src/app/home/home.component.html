@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+<div class="buttonDiv">
+  <button *ngIf="isLoggedIn()" (click)="newProduct()" class="newButton" mat-raised-button>New Product</button>
+  <button *ngIf="isLoggedIn()" (click)="reports()" class="newButton" mat-raised-button>Reports</button>
+</div>
+<div>
+    <app-product-item class="product" *ngFor="let product of products" [product]="product"></app-product-item>
+</div>

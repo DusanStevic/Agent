@@ -1,0 +1,135 @@
+# source: https://faun.pub/continuous-integration-of-java-project-with-github-actions-7a8a0e8246ef
+name: CI operations PR event DEVELOP branch MAIN branch pipeline
+on:
+  pull_request:
+    branches:
+      - develop
+    types: [opened, synchronize, reopened]
+jobs:
+  # Test - Units & Integrations
+  test:
+    name: Test - Units & Integrations
+    runs-on: ubuntu-latest
+    strategy:
+      # A matrix allows you to create multiple jobs by performing variable substitution in a single job definition
+      matrix: { dir: [ 'AgentProductService', 'AgentReportService','AgentShopService' ] }
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Maven Package
+        working-directory: ${{ matrix.dir }}
+        run: mvn -B clean package -DskipTests
+      - name: Maven Verify
+        working-directory: ${{ matrix.dir }}
+        run: mvn -B clean verify -Ptest
+
+  # Analyze code with Sonar Cloud
+  sonar_product_service: # Generated using Sonar Cloud Maven build template
+    name: Test - SonarCloud scan (analysis) of product service
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # -Pdev activate dev profile -f path/to/pom.xml
+        run: mvn -Pdev -f AgentProductService/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DusanStevic_Agent
+
+  sonar_report_service: # Generated using Sonar Cloud Maven build template
+    name: Test - SonarCloud scan (analysis) of report service
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # -Pdev activate dev profile -f path/to/pom.xml
+        run: mvn -Pdev -f AgentReportService/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DusanStevic_Agent
+
+  sonar_shop_service: # Generated using Sonar Cloud Maven build template
+    name: Test - SonarCloud scan (analysis) of shop service
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # -Pdev activate dev profile -f path/to/pom.xml
+        run: mvn -Pdev -f AgentShopService/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DusanStevic_Agent
+
+  sonar_agent_frontend: # Generated using Sonar Cloud Other (for JS, TS, Go, Python, PHP, ...) build template
+    name: Test - SonarCloud scan (analysis) of agent frontend
+    runs-on: ubuntu-latest
+    # Prevents: The date of analysis cannot be older than the date of the last known analysis on this project.
+    # Value: "2021-08-30T19:30:38+0000". Latest analysis: "2021-08-30T19:30:54+0000". It's only possible to
+    # rebuild the past in chronological order.
+    needs: [sonar_product_service, sonar_report_service, sonar_shop_service]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

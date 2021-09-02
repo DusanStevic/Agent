@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<button class="backButton" mat-raised-button (click)="back()">Back</button>
+<div class="form-wrapper" >
+  <mat-card class="box">
+    <form class="form" [formGroup]="buyForm" (ngSubmit)="buyForm.valid && buy()" noval>
+      <mat-card-header>
+        <img class="productImage" [src]="url">
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="field-full-width">
+          <input id="quantity"
+                 matInput
+                 formControlName="quantity"
+                 placeholder="Quantity" />
+          <mat-error>Quantity can not be blank.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input id="name"
+                 matInput
+                 formControlName="name"
+                 placeholder="Name" />
+          <mat-error >Product Name can not be blank.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+          <input id="address"
+                 matInput
+                 formControlName="address"
+                 placeholder="Address" />
+          <mat-error>Address can not be blank.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+          <input id="phone"
+                 matInput
+                 formControlName="phone"
+                 placeholder="Phone number" />
+          <mat-error >Phone number can not be blank.</mat-error>
+        </mat-form-field>
+
+
+      </mat-card-content>
+      <button id="productBt" mat-stroked-button color= "primary" class="btn-block">Buy</button>
+    </form>
+  </mat-card>
+</div>

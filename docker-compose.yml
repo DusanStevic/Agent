@@ -1,0 +1,129 @@
+version: "3.8"
+services:
+
+  gateway:
+    image: nginx:1.19.8-alpine
+#    build:
+#      context: ./services/Gateway
+#      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - servers
+    volumes:
+      - ./Gateway/nginx.conf:/etc/nginx/nginx.conf
+      - ./Gateway/api_gateway.conf:/etc/nginx/api_gateway.conf
+    depends_on:
+      - product-service
+      - report-service
+      - shop-service
+
+  product-service:
+    #image: danijelradakovic/consumer-service
+    image: product-service
+    build:
+      context: ./AgentProductService
+      dockerfile: Dockerfile
+      args:
+        STAGE: ${STAGE:-dev}
+    restart: on-failure
+    networks:
+      - servers
+    ports:
+      - 9000:8080
+    environment:
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_DOMAIN: ${DATABASE_DOMAIN}
+      DATABASE_SCHEMA: ${DATABASE_SCHEMA}
+    depends_on:
+      - database
+
+
+  report-service:
+    #image: danijelradakovic/order-service
+    image: report-service
+    build:
+      context: ./AgentReportService
+      dockerfile: Dockerfile
+      args:
+        STAGE: ${STAGE:-dev}
+    restart: on-failure
+    networks:
+      - servers
+    ports:
+      - 9001:8080
+    environment:
+      PRODUCT_SERVICE_DOMAIN: ${PRODUCT_SERVICE_DOMAIN}
+      PRODUCT_SERVICE_PORT: ${PRODUCT_SERVICE_PORT}
+      SHOP_SERVICE_DOMAIN: ${SHOP_SERVICE_DOMAIN}
+      SHOP_SERVICE_PORT: ${SHOP_SERVICE_PORT}
+
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_DOMAIN: ${DATABASE_DOMAIN}
+      DATABASE_SCHEMA: ${DATABASE_SCHEMA}
+    depends_on:
+        - database
+
+
+
+  shop-service:
+    #image: danijelradakovic/kitchen-service
+    image: shop-service
+    build:
+      context: ./AgentShopService
+      dockerfile: Dockerfile
+      args:
+        STAGE: ${STAGE:-dev}
+    restart: on-failure
+    networks:
+      - servers
+    ports:
+      - 9002:8080
+    environment:
+      PRODUCT_SERVICE_DOMAIN: ${PRODUCT_SERVICE_DOMAIN}
+      PRODUCT_SERVICE_PORT: ${PRODUCT_SERVICE_PORT}
+
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_DOMAIN: ${DATABASE_DOMAIN}
+      DATABASE_SCHEMA: ${DATABASE_SCHEMA}
+    depends_on:
+      - database
+
+
+  database:
+    image: mysql:${MYSQL_VERSION:-8.0.19}
+    container_name: mysql
+    restart: always
+    networks:
+      - servers
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - database-data:/var/lib/mysql
+
+  frontend:
+    build:
+      context: ./AgentFrontend
+      dockerfile: Dockerfile
+    image: agent-frontend
+    ports:
+      - '80:80'
+    environment:
+      NODE_ENV: ${NODE_ENV}
+
+volumes:
+  database-data:
+    name: server-database
+
+networks:
+  servers:
+    name: servers
+    driver: bridge
