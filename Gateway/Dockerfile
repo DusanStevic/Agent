@@ -7,14 +7,16 @@ WORKDIR /app
 # you will use dependencies from npm base image that already have installed those dependencies
 # COPY package*.json /app/
 # RUN npm install
-COPY ./AgentFrontend /app
+
+# Your current context is the Agent folder look at the docker-compose.yml file
+COPY ./AgentFrontend .
 ARG NODE_ENV
 RUN npm run build -- --outputPath=./dist/out --configuration ${NODE_ENV}
 # Stage 2, use the compiled app, ready for production with Nginx
 FROM nginx
 COPY ./Gateway/api_gateway.conf /etc/nginx/conf.d/default.conf.template
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY ./Gateway/nginx.conf /etc/nginx/nginx.conf
 CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
 COPY --from=build /app/dist/out/ /usr/share/nginx/html
-EXPOSE $PORT
+EXPOSE 8080
 

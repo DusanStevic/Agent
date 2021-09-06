@@ -6,9 +6,9 @@ services:
     build:
       # You are using the AgentFrontend folder as context because that folder contains frontend source code,
       # Gateway folder doesn't have frontend source code
-      context: ./AgentFrontend
+      context: .
       # For binding Gateway (NGINX) with AgentFrontend, we use Dockerfile from the Gateway folder
-      dockerfile: Gateway/Dockerfile
+      dockerfile: ./Gateway/Dockerfile
     ports:
       - 8080:8080
     environment:
