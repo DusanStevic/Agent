@@ -4,8 +4,10 @@ services:
   gateway:
     image: nginx:1.19.8-alpine
     build:
-      # You are using the AgentFrontend folder as context because that folder contains frontend source code,
-      # Gateway folder doesn't have frontend source code
+      # You are using the Agent parent folder as context.
+      # Agent parent folder lets you enter: AgentFrontend and Gateway folder.
+      # The AgentFrontend contains frontend source code.
+      # The Gateway contains Dockerfile.
       context: .
       # For binding Gateway (NGINX) with AgentFrontend, we use Dockerfile from the Gateway folder
       dockerfile: ./Gateway/Dockerfile

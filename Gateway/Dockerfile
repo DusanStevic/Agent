@@ -8,7 +8,7 @@ WORKDIR /app
 # COPY package*.json /app/
 # RUN npm install
 
-# Your current context is the Agent folder look at the docker-compose.yml file
+# Your current context is the Agent parent folder look at the docker-compose.yml file
 COPY ./AgentFrontend .
 ARG NODE_ENV
 RUN npm run build -- --outputPath=./dist/out --configuration ${NODE_ENV}
