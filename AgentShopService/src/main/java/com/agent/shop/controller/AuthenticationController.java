@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "")
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
@@ -23,6 +24,6 @@ public class AuthenticationController {
     @PostMapping(value = "login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO0) throws AuthenticationException {
         String token = authenticationService.login(loginRequestDTO0);
-        return new ResponseEntity(new LoginResponseDTO(token), HttpStatus.OK);
+        return new ResponseEntity<>(new LoginResponseDTO(token), HttpStatus.OK);
     }
 }
