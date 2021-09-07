@@ -83,7 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // don't authenticate this particular request
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/hello").permitAll()
+                .antMatchers(HttpMethod.GET, "product/hello").permitAll()
                 .antMatchers(HttpMethod.GET, "product/{id}").permitAll()
                 .antMatchers(HttpMethod.GET, "product").permitAll()
                 .antMatchers(HttpMethod.PUT, "product").permitAll()
