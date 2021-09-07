@@ -18,6 +18,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 @RestController
+@RequestMapping(value = "shop")
 public class ShoppingController {
 
     private final PurchaseService purchaseService;
