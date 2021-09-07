@@ -18,7 +18,7 @@ export class ProductService {
   createProduct(dto: Product, file: File, success, failure) {
     if (!file) {
       console.log(`${environment.agentApi}api/product`);
-      this.http.post<Product>(`${environment.agentApi}api/product`, dto).subscribe(
+      this.http.post<Product>(`${environment.agentApi}api/product/product`, dto).subscribe(
         response => {
           success();
         }, error => {
@@ -31,7 +31,7 @@ export class ProductService {
     this.uploadImage(file).subscribe(
       response => {
         dto.imagePath = response.url;
-        this.http.post<Product>(`${environment.agentApi}api/product`, dto).subscribe(
+        this.http.post<Product>(`${environment.agentApi}api/product/product`, dto).subscribe(
           serverResponse => {
             success();
           }, serverError => {
@@ -51,21 +51,21 @@ export class ProductService {
   }
 
   getProducts(): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`${environment.agentApi}api/product`);
+    return this.http.get<Array<Product>>(`${environment.agentApi}api/product/product`);
   }
 
   getProduct(id: string): Observable<Product> {
-    return this.http.get<Product>(`${environment.agentApi}api/product/${id}`);
+    return this.http.get<Product>(`${environment.agentApi}api/product/product/${id}`);
   }
 
   deleteProduct(id: string): Observable<boolean> {
-    return this.http.delete<boolean>(`${environment.agentApi}api/product/${id}`);
+    return this.http.delete<boolean>(`${environment.agentApi}api/product/product/${id}`);
   }
   editProduct(dto: Product, file: File, success, failure) {
     console.log(file);
     if (!file) {
       console.log(`${environment.agentApi}api/product`);
-      this.http.put<Product>(`${environment.agentApi}api/product`, dto).subscribe(
+      this.http.put<Product>(`${environment.agentApi}api/product/product`, dto).subscribe(
         response => {
           success();
         }, error => {
@@ -79,7 +79,7 @@ export class ProductService {
     this.uploadImage(file).subscribe(
       response => {
         dto.imagePath = response.url;
-        this.http.put<Product>(`${environment.agentApi}api/product`, dto).subscribe(
+        this.http.put<Product>(`${environment.agentApi}api/product/product`, dto).subscribe(
           serverResponse => {
             success();
           }, serverError => {
