@@ -12,11 +12,11 @@ import java.util.List;
 // app.product.url from application.properties
 @FeignClient(name = "product", url = "${app.product.url}")
 public interface ProductClient {
-    @GetMapping("{id}")
+    @GetMapping("product/{id}")
     ProductDTO getProduct(@PathVariable("id") Long productId);
-    @GetMapping("")
+    @GetMapping("product")
     List<ProductDTO> getProducts();
 
-    @PutMapping
+    @PutMapping(value = "product")
     ProductDTO editProduct(@RequestBody ProductDTO productDTO);
 }
