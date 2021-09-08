@@ -1,5 +1,5 @@
 # source: https://faun.pub/continuous-integration-of-java-project-with-github-actions-7a8a0e8246ef
-name: CI operations PR event DEVELOP branch MAIN branch pipeline
+name: CI operations PR event DEVELOP branch pipeline
 on:
   pull_request:
     branches:

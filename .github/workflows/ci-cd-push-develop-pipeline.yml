@@ -51,5 +51,5 @@ jobs:
     needs: [prerelease]
     steps:
       - uses: actions/checkout@v1
-      - name: Build product service docker image
+      - name: Build and publish services' Docker images on Docker Hub
         run: bash ./publish-dockerhub.sh ${{ needs.prerelease.outputs.tag_name }} ${{ secrets.DOCKER_USER }} ${{ secrets.DOCKER_PASS }}
