@@ -20,7 +20,7 @@ cd ../AgentShopService
 DOCKER_BUILDKIT=1 docker build -t ${SHOP} --no-cache .
 
 cd ../Gateway
-DOCKER_BUILDKIT=1 docker build -t ${GATEWAY} Dockerfile.prod --no-cache .
+DOCKER_BUILDKIT=1 docker build -t ${GATEWAY} -f Dockerfile.prod --no-cache .
 
 docker login --username ${DOCKERHUB_USERNAME} --password ${DOCKERHUB_PASSWORD}
 
