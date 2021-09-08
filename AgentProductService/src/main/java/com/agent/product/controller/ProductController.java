@@ -16,6 +16,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 @RestController
+@RequestMapping(value = "product")
 public class ProductController {
 
     private final ProductService productService;

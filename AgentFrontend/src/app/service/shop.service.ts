@@ -17,11 +17,11 @@ export class ShopService {
   }
 
   buy(buyRequest: PurchaseRequest): Observable<PurchaseResponse> {
-    return this.http.post<PurchaseResponse>(`${environment.agentApi}api/shop`, buyRequest);
+    return this.http.post<PurchaseResponse>(`${environment.agentApi}api/shop/shop`, buyRequest);
   }
 
   report(): Observable<Report> {
-    return this.http.get<Report>(`${environment.agentApi}api/report`);
+    return this.http.get<Report>(`${environment.agentApi}api/report/`);
   }
 
 }

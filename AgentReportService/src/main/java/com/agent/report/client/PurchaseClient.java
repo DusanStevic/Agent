@@ -12,6 +12,6 @@ import java.util.List;
 @FeignClient(name = "shop", url = "${app.shop.url}")
 public interface PurchaseClient {
 
-    @GetMapping(value = "purchases", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "shop/purchases", produces = MediaType.APPLICATION_JSON_VALUE)
     List<Purchase> getPurchases();
 }
