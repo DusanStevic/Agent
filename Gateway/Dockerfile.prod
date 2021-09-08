@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Your current context is the Agent parent folder look at the docker-compose.yml file
 COPY ./AgentFrontend .
-ARG NODE_ENV
+ARG NODE_ENV=production
 RUN npm run build -- --outputPath=./dist/out --configuration ${NODE_ENV}
 # Stage 2, use the compiled app, ready for production with Nginx
 FROM nginx
