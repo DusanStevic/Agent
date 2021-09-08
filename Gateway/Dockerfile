@@ -18,5 +18,6 @@ COPY ./Gateway/api_gateway.conf /etc/nginx/conf.d/default.conf.template
 COPY ./Gateway/nginx.conf /etc/nginx/nginx.conf
 CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
 COPY --from=build /app/dist/out/ /usr/share/nginx/html
+# Statically fixed port
 EXPOSE 8080
 
