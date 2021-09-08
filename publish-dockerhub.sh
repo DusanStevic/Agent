@@ -10,6 +10,10 @@ REPORT=${DOCKERHUB_USERNAME}/agent-report-service-proba:${VERSION}
 SHOP=${DOCKERHUB_USERNAME}/agent-shop-service-proba:${VERSION}
 GATEWAY=${DOCKERHUB_USERNAME}/agent-gateway-proba:${VERSION}
 
+# You are using the Agent parent folder as context.
+# Agent parent folder lets you enter: AgentFrontend folder and Gateway folder.
+# The AgentFrontend folder contains frontend source code.
+# The Gateway folder contains Dockerfile.
 DOCKER_BUILDKIT=1 docker build -t ${GATEWAY} --no-cache -f ./Gateway/Dockerfile.prod .
 
 cd AgentProductService
