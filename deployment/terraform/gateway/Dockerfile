@@ -1,2 +1,1 @@
-FROM danijelradakovic/servers:0.2.0
-CMD java -jar servers.jar --server.port=$PORT
+FROM stevicdule/agent-gateway-proba:v0.0.52-develop.0
