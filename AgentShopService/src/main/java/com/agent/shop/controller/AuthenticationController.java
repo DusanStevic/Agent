@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping(value = "")
+@CrossOrigin(origins = {"https://dule-agent-gateway-stage.herokuapp.com"})
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
