@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ import java.net.UnknownHostException;
 
 @RestController
 @RequestMapping(value = "product")
+@CrossOrigin(origins = {"https://dule-agent-gateway-stage.herokuapp.com"})
 public class ProductController {
 
     private final ProductService productService;
