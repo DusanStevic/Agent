@@ -8,13 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 @RestController
-@CrossOrigin(origins = {"https://dule-agent-gateway-stage.herokuapp.com"})
 public class ReportController {
 
     private final ReportService reportService;
