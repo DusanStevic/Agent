@@ -1,3 +1,3 @@
-FROM stevicdule/agent-report-service-proba:v0.0.67-develop.0
-CMD java -jar report_service.jar --server.port=$PORT
+FROM stevicdule/agent-report-service-proba:v0.0.69-develop.0
+#CMD java -jar report_service.jar --server.port=$PORT
 
