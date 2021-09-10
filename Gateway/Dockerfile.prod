@@ -15,7 +15,7 @@ RUN npm run build -- --outputPath=./dist/out --configuration ${NODE_ENV}
 # Stage 2, use the compiled app, ready for production with Nginx
 FROM nginx
 COPY ./Gateway/api_gateway_prod.conf /etc/nginx/conf.d/default.conf.template
-COPY ./Gateway/nginx_prod.conf /etc/nginx/nginx.conf
+#COPY ./Gateway/nginx_prod.conf /etc/nginx/nginx.conf
 CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
 COPY --from=build /app/dist/out/ /usr/share/nginx/html
 # Dynamically provided port by Heroku
