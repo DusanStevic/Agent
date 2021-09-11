@@ -17,13 +17,13 @@ GATEWAY=${DOCKERHUB_USERNAME}/agent-gateway-proba:${VERSION}
 DOCKER_BUILDKIT=1 docker build -t ${GATEWAY} --no-cache -f ./Gateway/Dockerfile.prod .
 
 cd AgentProductService
-DOCKER_BUILDKIT=1 docker build -t ${PRODUCT} --no-cache -f Dockerfile.prod .
+DOCKER_BUILDKIT=1 docker build -t ${PRODUCT} --no-cache .
 
 cd ../AgentReportService
-DOCKER_BUILDKIT=1 docker build -t ${REPORT} --no-cache -f Dockerfile.prod .
+DOCKER_BUILDKIT=1 docker build -t ${REPORT} --no-cache .
 
 cd ../AgentShopService
-DOCKER_BUILDKIT=1 docker build -t ${SHOP} --no-cache -f Dockerfile.prod .
+DOCKER_BUILDKIT=1 docker build -t ${SHOP} --no-cache .
 
 docker login --username ${DOCKERHUB_USERNAME} --password ${DOCKERHUB_PASSWORD}
 
