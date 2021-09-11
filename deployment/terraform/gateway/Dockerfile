@@ -1,2 +1,2 @@
-FROM stevicdule/agent-gateway-proba:v0.0.72-develop.0
+FROM stevicdule/agent-gateway-proba:v0.0.73-develop.0
 
