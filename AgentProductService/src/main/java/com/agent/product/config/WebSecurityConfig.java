@@ -85,8 +85,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "product/hello").permitAll()
                 .antMatchers(HttpMethod.GET, "product/{id}").permitAll()
-                .antMatchers(HttpMethod.GET, "product").permitAll()
-                .antMatchers(HttpMethod.PUT, "product").permitAll()
+                .antMatchers(HttpMethod.GET, "product", "/product","product/**","/product/**","/product/").permitAll()
+                .antMatchers(HttpMethod.PUT, "product", "/product","product/**","/product/**","/product/").permitAll()
 
                 // all other requests need to be authenticated
                 .anyRequest().authenticated().and();
