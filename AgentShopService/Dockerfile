@@ -3,7 +3,7 @@
 # added in pom.xml the final image will only download that delta dependency as the rest of the
 # dependencies would already be present via base builder image.
 FROM stevicdule/mvn-base-agent-shop:1.0.0-dev AS appBuild
-ARG STAGE=dev
+ARG STAGE=prod
 LABEL maintainer="stevicdule@gmail.com"
 
 WORKDIR /usr/src/shop_service
