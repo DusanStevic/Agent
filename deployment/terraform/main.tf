@@ -124,14 +124,14 @@ resource "heroku_app_config_association" "gateway-service" {
 }
 
 output "product_app_url" {
-  value = "http://${heroku_app.product-service.name}.herokuapp.com"
+  value = "https://${heroku_app.product-service.name}.herokuapp.com"
 }
 output "shopping_app_url" {
-  value = "http://${heroku_app.shopping-service.name}.herokuapp.com"
+  value = "https://${heroku_app.shopping-service.name}.herokuapp.com"
 }
 output "report_app_url" {
-  value = "http://${heroku_app.report-service.name}.herokuapp.com"
+  value = "https://${heroku_app.report-service.name}.herokuapp.com"
 }
 output "gateway_app_url" {
-  value = "http://${heroku_app.gateway-service.name}.herokuapp.com"
+  value = "https://${heroku_app.gateway-service.name}.herokuapp.com"
 }
