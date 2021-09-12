@@ -1,1 +1,1 @@
-FROM stevicdule/agent-report-service-proba:v0.0.91-develop.0
+FROM stevicdule/agent-report-service-proba:v0.0.92-develop.0
