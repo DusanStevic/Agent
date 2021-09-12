@@ -1,1 +1,1 @@
-FROM stevicdule/agent-shop-service-proba:v0.0.93-develop.0
+FROM stevicdule/agent-shop-service-proba:v0.0.95-develop.0
